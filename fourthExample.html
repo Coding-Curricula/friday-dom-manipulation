@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .star {
+        font-size: 24px;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .selected {
+        color: gold;
+      }
+    </style>
+    <title>Star Example</title>
+  </head>
+  <body>
+    <div id="starContainer">
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+    </div>
+
+    <div id="ratingDisplay">Rating: none yet</div>
+
+    <br />
+
+    <button id="submitButton">Submit Rating</button>
+
+    <script>
+      const starContainer = document.getElementById("starContainer");
+      const ratingDisplay = document.getElementById("ratingDisplay");
+      const submitButton = document.getElementById("submitButton");
+      const stars = Array.from(starContainer.querySelectorAll(".star"));
+      let currentRating = 0; // Initialize currentRating
+
+      stars.forEach((star, index) => {
+        star.addEventListener("click", function () {
+          stars.forEach((s) => s.classList.remove("selected"));
+          stars.slice(0, index + 1).forEach((s) => s.classList.add("selected"));
+          currentRating = index + 1;
+          ratingDisplay.textContent = `Rating: ${currentRating} stars`;
+        });
+      });
+
+      submitButton.addEventListener("click", function () {
+        console.log(`Rating: ${currentRating} stars`);
+        // Here, you can send the rating to a server or do whatever you need
+        window.location.href = "thankYou.html"
+      });
+    </script>
+  </body>
+</html>
