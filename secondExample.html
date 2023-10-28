@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .completed {
+        text-decoration: line-through;
+        color: grey;
+        font-style: italic;
+      }
+    </style>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <input type="text" id="taskInput" placeholder="Add a task" />
+    <button id="addTaskButton">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+      const taskInput = document.getElementById("taskInput");
+      const addTaskButton = document.getElementById("addTaskButton");
+      const taskList = document.getElementById("taskList");
+
+      addTaskButton.addEventListener("click", () => {
+        const task = taskInput.value;
+
+        if (task.length === 0) {
+          alert("Please enter a task");
+          return;
+        }
+
+        if (task) {
+          const li = document.createElement("li");
+          li.innerText = task;
+
+          li.addEventListener("click", () => {
+            li.classList.toggle("completed");
+          });
+
+          taskList.appendChild(li);
+          taskInput.value = ""; // clear the input field
+        }
+      });
+    </script>
+  </body>
+</html>
