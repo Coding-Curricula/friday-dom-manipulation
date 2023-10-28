@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+    <title>Dynamic Button Todo List</title>
+  </head>
+  <body>
+    <h1>Dynamic Button Todo List</h1>
+    <div id="buttonContainer">
+      <button data-task="Buy groceries">Buy groceries</button>
+      <button data-task="Go to the gym">Go to the gym</button>
+      <button data-task="Go to the store">Go to the store</button>
+      <button data-task="Go to the bank">Go to the bank</button>
+    </div>
+
+    <h2>Tasks to do</h2>
+    <ul id="taskList"></ul>
+
+    <script>
+      const buttonContainer = document.getElementById("buttonContainer");
+      const taskList = document.getElementById("taskList");
+
+      buttonContainer.addEventListener("click", (event) => {
+        // ensure the element is a button
+        if (event.target.tagName === "BUTTON") {
+          // create a new list item
+          const task = event.target.getAttribute("data-task");
+          const listItem = document.createElement("li");
+          listItem.innerText = task;
+          // remove the button
+          event.target.remove();
+          // add the task to the list
+          addTaskToList(task);
+          // prevent the page from refreshing
+          event.preventDefault();
+        }
+      });
+
+      function addTaskToList(task) {
+        const listItem = document.createElement("li");
+        listItem.innerText = task;
+        taskList.appendChild(listItem);
+      }
+    </script>
+  </body>
+</html>
