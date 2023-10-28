@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <title>DOM Manipulation Introduction</title>
+  </head>
+  <body>
+    <p id="my-paragraph">Click the button to change some text</p>
+    <button id="my-button">Change Text</button>
+
+    <script>
+      const paragraph = document.querySelector("#my-paragraph");
+      const button = document.getElementById("my-button");
+
+      // add an event listener to the button
+      button.addEventListener("click", ()=> {
+        changeText();
+        changeTextSize();
+        changeTextColor();
+      });
+
+      // function to change text
+      function changeText() {
+        paragraph.textContent = "Hello Team";
+      }
+
+      function changeTextSize(){
+        paragraph.style.fontSize = "100px";
+      }
+
+      function changeTextColor(){
+        paragraph.style.color = "red";
+      }
+    </script>
+  </body>
+</html>
